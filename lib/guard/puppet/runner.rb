@@ -15,7 +15,8 @@ module Guard
       end
 
       def run
-        ::Puppet::Util::CommandLine.new('puppet', command_line_params)
+        ::Puppet::Util::CommandLine.new('puppet', command_line_params).execute
+        0
       rescue SystemExit => e
         e.status
       end

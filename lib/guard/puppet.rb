@@ -12,7 +12,7 @@ module ::Guard
     end
 
     def run_all
-      UI.info msg = "Applying Puppet configuration..."
+      UI.info(msg = "Applying Puppet configuration...")
       Notifier.notify msg, :title => "Puppet Config", :image => :pending
       if Runner.new(@options).run != 0
         Notifier.notify "Puppet config failure!", :title => "Puppet Config", :image => :failed
