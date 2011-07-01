@@ -15,10 +15,11 @@ module ::Guard
       UI.info(msg = "Applying Puppet configuration...")
       Notifier.notify msg, :title => "Puppet Config", :image => :pending
       if Runner.new(@options).run != 0
-        Notifier.notify "Puppet config failure!", :title => "Puppet Config", :image => :failed
+        Notifier.notify(msg = "Puppet config failure!", :title => "Puppet Config", :image => :failed)
       else
-        Notifier.notify "Puppet config reapplied successfully!", :title => "Puppet Config"
+        Notifier.notify(msg = "Puppet config reapplied successfully!", :title => "Puppet Config")
       end
+      UI.info(msg)
     end
 
     def run_on_change(files = [])

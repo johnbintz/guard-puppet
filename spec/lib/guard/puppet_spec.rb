@@ -6,7 +6,7 @@ describe Guard::Puppet do
 
   describe '#run_all' do
     before do
-      Guard::UI.expects(:info)
+      Guard::UI.stubs(:info)
       Guard::Notifier.expects(:notify).with("Applying Puppet configuration...", { :image => :pending, :title => "Puppet Config" })
       Guard::Puppet::Runner.any_instance.expects(:run).returns(return_value)
     end
