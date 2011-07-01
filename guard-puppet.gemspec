@@ -8,8 +8,8 @@ Gem::Specification.new do |s|
   s.authors     = ["John Bintz"]
   s.email       = ["john@coswellproductions.com"]
   s.homepage    = ""
-  s.summary     = %q{TODO: Write a gem summary}
-  s.description = %q{TODO: Write a gem description}
+  s.summary     = %q{Reapply Puppet configs automatically using Guard.}
+  s.description = %q{Reapply Puppet configs automatically using Guard.}
 
   s.rubyforge_project = "guard-puppet"
 
