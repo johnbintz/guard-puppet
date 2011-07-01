@@ -9,31 +9,19 @@ describe Guard::Puppet::Runner do
     subject { runner.command_line_params }
 
     context 'default' do
-      it { should == [ 'apply' ] }
+      it { should == [ 'apply', %{--confdir="#{Dir.pwd}"}, '-v', 'manifests/site.pp' ] }
     end
 
-    context 'verbose' do
-      let(:options) { { :verbose => true } }
+    context 'not verbose' do
+      let(:options) { { :verbose => false } }
 
-      it { should == [ 'apply', '-v' ] }
-    end
-
-    context 'config dir with path' do
-      let(:options) { { :config_dir => '/123' } }
-
-      it { should == [ 'apply', '--confdir="/123"' ] }
-    end
-
-    context 'config dir with true' do
-      let(:options) { { :config_dir => true } }
-
-      it { should == [ 'apply', %{--confdir="#{Dir.pwd}"} ] }
+      it { should == [ 'apply', %{--confdir="#{Dir.pwd}"}, 'manifests/site.pp' ] }
     end
 
     context 'manifest' do
       let(:options) { { :manifest => '123' } }
 
-      it { should == [ 'apply', '123' ] }
+      it { should == [ 'apply', %{--confdir="#{Dir.pwd}"}, '-v', '123' ] }
     end
   end
 

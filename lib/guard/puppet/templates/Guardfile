@@ -1,0 +1,4 @@
+guard 'puppet' do
+  watch(%r{^(manifests|modules)})
+end
+

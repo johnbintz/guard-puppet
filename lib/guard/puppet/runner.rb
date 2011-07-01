@@ -8,7 +8,10 @@ module Guard
       attr_reader :options
 
       def initialize(options)
-        @options = options
+        @options = {
+          :verbose => true,
+          :manifest => 'manifests/site.pp'
+        }.merge(options)
       end
 
       def run
@@ -18,12 +21,8 @@ module Guard
       end
 
       def command_line_params
-        command = [ "apply" ]
+        command = [ "apply", %{--confdir="#{Dir.pwd}"} ]
         command << "-v" if @options[:verbose]
-        if @options[:config_dir]
-          @options[:config_dir] = Dir.pwd if @options[:config_dir] == true
-          command << %{--confdir="#{@options[:config_dir]}"} if @options[:config_dir]
-        end
         command << @options[:manifest] if @options[:manifest]
         command
       end
