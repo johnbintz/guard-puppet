@@ -9,6 +9,8 @@ module ::Guard
     def initialize(watchers = [], options = {})
       super
       @options = options
+
+      UI.info "Guard::Puppet is watching for changes..."
     end
 
     def run_all
