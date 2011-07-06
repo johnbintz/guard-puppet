@@ -11,6 +11,7 @@ module ::Guard
       @options = options
 
       UI.info "Guard::Puppet is watching for changes..."
+      run_all if options[:run_on_start]
     end
 
     def run_all
