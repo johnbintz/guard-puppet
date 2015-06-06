@@ -10,7 +10,7 @@ Gem::Specification.new do |s|
   s.license     = "MIT"
   s.homepage    = "https://github.com/guard/guard-puppet"
   s.summary     = %q{Reapply Puppet configs automatically using Guard.}
-  s.description = %q{Reapply Puppet configs automatically using Guard.}
+  s.description = %q{Guard plugin to reapply Puppet configurations.}
 
   s.files         = `git ls-files`.split("\n")
   s.test_files    = `git ls-files -- {test,spec,features}/*`.split("\n")
