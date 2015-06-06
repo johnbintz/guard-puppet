@@ -11,8 +11,6 @@ Gem::Specification.new do |s|
   s.summary     = %q{Reapply Puppet configs automatically using Guard.}
   s.description = %q{Reapply Puppet configs automatically using Guard.}
 
-  s.rubyforge_project = "guard-puppet"
-
   s.files         = `git ls-files`.split("\n")
   s.test_files    = `git ls-files -- {test,spec,features}/*`.split("\n")
   s.executables   = `git ls-files -- bin/*`.split("\n").map{ |f| File.basename(f) }
