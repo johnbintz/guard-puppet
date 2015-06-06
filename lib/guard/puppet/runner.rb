@@ -50,7 +50,7 @@ module Guard
       private
       def maybe_bundle_with_env(&block)
         if defined?(::Bundler)
-          Bundler.with_clean_env(&block)
+          ::Bundler.with_clean_env(&block)
         else
           yield
         end
