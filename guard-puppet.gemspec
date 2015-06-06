@@ -7,6 +7,7 @@ Gem::Specification.new do |s|
   s.version     = Guard::PuppetVersion::VERSION
   s.authors     = ["John Bintz"]
   s.email       = ["john@coswellproductions.com"]
+  s.license     = "MIT"
   s.homepage    = "https://github.com/guard/guard-puppet"
   s.summary     = %q{Reapply Puppet configs automatically using Guard.}
   s.description = %q{Reapply Puppet configs automatically using Guard.}
