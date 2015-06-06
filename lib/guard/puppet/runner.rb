@@ -21,6 +21,12 @@ module Guard
 
         begin
           maybe_bundle_with_env do
+            # TODO: hack, untested, needed to avoid:
+            #
+            #"Error: Could not initialize global default settings:
+            #  Attempting to initialize global default settings more than once!"
+            ::Puppet.settings.send(:clear_everything_for_tests)
+
             ::Puppet::Util::CommandLine.new('puppet', command_line_params).execute
           end
           0
@@ -50,7 +56,7 @@ module Guard
       private
       def maybe_bundle_with_env(&block)
         if defined?(::Bundler)
-          Bundler.with_clean_env(&block)
+          ::Bundler.with_clean_env(&block)
         else
           yield
         end

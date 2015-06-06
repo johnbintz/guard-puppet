@@ -7,20 +7,16 @@ Gem::Specification.new do |s|
   s.version     = Guard::PuppetVersion::VERSION
   s.authors     = ["John Bintz"]
   s.email       = ["john@coswellproductions.com"]
-  s.homepage    = ""
+  s.license     = "MIT"
+  s.homepage    = "https://github.com/guard/guard-puppet"
   s.summary     = %q{Reapply Puppet configs automatically using Guard.}
-  s.description = %q{Reapply Puppet configs automatically using Guard.}
-
-  s.rubyforge_project = "guard-puppet"
+  s.description = %q{Guard plugin to reapply Puppet configurations.}
 
   s.files         = `git ls-files`.split("\n")
   s.test_files    = `git ls-files -- {test,spec,features}/*`.split("\n")
   s.executables   = `git ls-files -- bin/*`.split("\n").map{ |f| File.basename(f) }
   s.require_paths = ["lib"]
 
-  s.add_dependency 'guard'
-  s.add_dependency 'puppet'
-
-  s.add_development_dependency 'rspec', '~> 2.6.0'
-  s.add_development_dependency 'mocha'
+  s.add_dependency 'guard-compat', '~> 1.2'
+  s.add_dependency 'puppet', '~> 4.1'
 end

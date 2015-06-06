@@ -1,7 +1,6 @@
 require 'spec_helper'
+require 'guard/compat/test/helper'
 require 'guard/puppet'
-require 'guard/ui'
-require 'guard/notifier'
 
 describe Guard::Puppet do
   let(:guard) { described_class.new }
@@ -21,7 +20,7 @@ describe Guard::Puppet do
       it 'should run Puppet on start' do
         Guard::Puppet.any_instance.expects(:run_all)
 
-        described_class.new([], { :run_on_start => true })
+        described_class.new(:run_on_start => true)
       end
     end
   end

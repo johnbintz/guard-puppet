@@ -1,12 +1,12 @@
-require 'guard/guard'
+require 'guard/compat/plugin'
 
-module ::Guard
-  class Puppet < ::Guard::Guard
+module Guard
+  class Puppet < Plugin
     class << self
       attr_accessor :is_wrapping_exit
     end
 
-    def initialize(watchers = [], options = {})
+    def initialize(options = {})
       super
       @options = options
 

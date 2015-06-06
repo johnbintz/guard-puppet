@@ -32,15 +32,36 @@ describe Guard::Puppet::Runner do
   end
 
   describe '#run' do
-    before do
-      ::Puppet::Util::CommandLine.expects(:new).raises(SystemExit.new(return_value))
-    end
-
     context 'returns a non-zero value' do
+      before do
+        ::Puppet::Util::CommandLine.expects(:new).raises(SystemExit.new(return_value))
+      end
+
       let(:return_value) { 10 }
 
       it 'should return the result of an exit call' do
         runner.run.should == return_value
+      end
+    end
+
+    context 'when bundler is used' do
+      before do
+        module ::Guard
+          class Bundler
+            def self.with_clean_env
+              fail "Called with_clean_env on Guard::Bundler instead of Bundler"
+            end
+          end
+        end
+      end
+
+      it 'uses a clean env' do
+        ran = false
+        ::Bundler.stubs(:with_clean_env).with() do
+          ran = true
+        end
+        runner.run
+        ran.should == true
       end
     end
 
