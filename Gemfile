@@ -4,6 +4,8 @@ source "http://rubygems.org"
 gemspec development_group: :gem_build_tools
 
 group :development do
+  gem 'guard', '~> 2.12'
+  gem 'guard-rspec', '~> 4.5'
 
   require 'rbconfig'
   if RbConfig::CONFIG['host_os'] =~ /linux/
